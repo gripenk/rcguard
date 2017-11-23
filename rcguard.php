@@ -199,9 +199,10 @@ class rcguard extends rcube_plugin
         $rcmail = rcmail::get_instance();
 
         $privatekey = $rcmail->config->get('recaptcha_privatekey');
+        $proxy = $rcmail->config->get('recaptcha_proxy');
         require_once($this->home . '/lib/recaptchalib.php');
 
-        $reCaptcha = new ReCaptcha($privatekey);
+        $reCaptcha = new ReCaptcha($privatekey, $proxy);
         $resp = $reCaptcha->verify($response, $client_ip);
 
         return ($resp != null && $resp->success);
