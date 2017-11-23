@@ -74,8 +74,8 @@ class ReCaptcha
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method' => 'POST',
                 'content' => http_build_query($params, '', '&'),
-                $proxy ? 'proxy' : $peer_key => $proxy ? $proxy : 'www.google.com',
-                $proxy ? 'request_fulluri' : 'verify_peer' => True,
+                $this->_proxy ? 'proxy' : $peer_key => $this->_proxy ? $this->_proxy : 'www.google.com',
+                $this->_proxy ? 'request_fulluri' : 'verify_peer' => True,
             )
         );
 
