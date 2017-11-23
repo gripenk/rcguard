@@ -74,15 +74,8 @@ class ReCaptcha
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method' => 'POST',
                 'content' => http_build_query($params, '', '&'),
-                $proxy ? 'proxy' : '' => $proxy ? $proxy : '',
-                $proxy ? 'request_fulluri' : '' => $proxy ? True : '',
-//                'proxy' => $proxy,
-//                'request_fulluri' => True, 
-                // Force the peer to validate (not needed in 5.6.0+, but still works)
-                $proxy ? '' : 'verify_peer' => $proxy ? '' : True,
-                $proxy ? '' : $peer_key => $proxy ? '' : 'www.google.com',
-//                'verify_peer' => true,
-//                $peer_key => 'www.google.com',
+                $proxy ? 'proxy' : $peer_key => $proxy ? $proxy : 'www.google.com',
+                $proxy ? 'request_fulluri' : 'verify_peer' => True,
             )
         );
 
