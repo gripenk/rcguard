@@ -28,6 +28,9 @@ $rcmail_config['recaptcha_publickey'] = '';
 // Private key for reCAPTCHA
 $rcmail_config['recaptcha_privatekey'] = '';
 
+// Proxy support
+$rcmail_config['recaptcha_proxy'] = ''; //  eg: 'tcp://proxy.example.com:5100' 
+
 // Log events
 $rcmail_config['recaptcha_log'] = false;
 
