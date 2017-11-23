@@ -39,13 +39,14 @@ class ReCaptcha
     private static $signupUrl = "https://www.google.com/recaptcha/admin";
     private static $siteVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
     private $_secret;
+    pricate $_proxy;
 
     /**
      * Constructor.
      *
      * @param string $secret shared secret between site and ReCAPTCHA server.
      */
-    function __construct($secret)
+    function __construct($secret, $proxy="")
     {
         if (empty($secret)) {
             die('To use reCAPTCHA you must get an API key from <a href="' .
@@ -53,6 +54,7 @@ class ReCaptcha
         }
 
         $this->_secret = $secret;
+        $this->_proxy = $proxy;
     }
 
 
@@ -74,6 +76,10 @@ class ReCaptcha
                 'content' => http_build_query($params, '', '&'),
                 // Force the peer to validate (not needed in 5.6.0+, but still works)
                 'verify_peer' => true,
+                $proxy ? 'proxy' : '' => $proxy ? $proxy : '',
+                $proxy ? 'request_fulluri' : '' => $proxy ? True : '',
+//                'proxy' => $proxy,
+//                'request_fulluri' => True, 
                 $peer_key => 'www.google.com',
             )
         );
